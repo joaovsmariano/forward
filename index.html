@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORWARD - Soluções Digitais para Negócios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00E676;
+            --primary-dark: #00B0FF;
+            --bg-dark: #0A0E17;
+            --bg-card: #121824;
+            --text-light: #F4F6FB;
+            --text-muted: #94A3B8;
+            --border: #1E293B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Header & Nav */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 23, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .btn-nav {
+            background: var(--primary);
+            color: #000;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 700;
+        }
+
+        .btn-nav:hover {
+            background: #00c853;
+            color: #000;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 5% 6rem;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary), #00c853);
+            color: #000;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: transform 0.2s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Grid de Serviços Globais */
+        .services-grid {
+            padding: 4rem 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        /* Pricing Sections */
+        .pricing-section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cards-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            align-items: stretch;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+        }
+
+        .card.featured {
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 20px rgba(0, 230, 118, 0.15);
+        }
+
+        .badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--primary);
+            color: #000;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .card ul {
+            list-style: none;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .card ul li {
+            margin-bottom: 0.8rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+        }
+
+        .card ul li::before {
+            content: "✓";
+            color: var(--primary);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .notice-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--primary-dark);
+            padding: 1rem;
+            margin-top: 2rem;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 3rem 5%;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">FORWARD<span>.</span></div>
+        <nav>
+            <a href="#servicos">Serviços</a>
+            <a href="#social-media">Social Media</a>
+            <a href="#design">Design</a>
+            <a href="#sites">Sites</a>
+            <a href="https://wa.me/5500000000000" class="btn-nav">Falar no WhatsApp</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Acelere a presença digital do seu <span>negócio</span></h1>
+        <p>Estratégia, design, sites e automação. Tudo o que sua empresa precisa para se destacar e vender mais no ambiente digital.</p>
+        <a href="#social-media" class="cta-btn">Ver Planos e Soluções</a>
+    </section>
+
+    <div class="services-grid" id="servicos">
+        <div class="service-tag">Social Media</div>
+        <div class="service-tag">Design de Posts</div>
+        <div class="service-tag">Criação de Sites</div>
+        <div class="service-tag">Automação</div>
+        <div class="service-tag">Dashboards</div>
+        <div class="service-tag">Soluções Digitais</div>
+    </div>
+
+    <section class="pricing-section" id="social-media">
+        <div class="section-title">
+            <h2>Gestão de Redes Sociais</h2>
+            <p>Planos mensais para manter sua marca ativa e em crescimento</p>
+        </div>
+
+        <div class="cards-wrapper">
+            <div class="card">
+                <h3>Start</h3>
+                <div class="price">R$ 450 <span>/mês</span></div>
+                <ul>
+                    <li>8 posts/mês</li>
+                    <li>4 Stories</li>
+                    <li>2 Reels</li>
+                    <li>Legendas estratégicas</li>
+                    <li>Calendário de conteúdo</li>
+                    <li>Planejamento mensal</li>
+                    <li>Publicação do conteúdo</li>
+                </ul>
+                <a href="https://wa.me/5500000000000?text=Tenho%20interesse%20no%20Plano%20Start" class="cta-btn" style="text-align: center;">Contratar Start</a>
+            </div>
+
+            <div class="card featured">
+                <div class="badge">POPULAR ⭐</div>
+                <h3>Pro</h3>
+                <div class="price">R$ 700 <span>/mês</span></div>
+                <ul>
+                    <li>12 posts/mês</li>
+                    <li>8 Stories</li>
+                    <li>4 Reels</li>
+                    <li>Legendas estratégicas</li>
+                    <li>Calendário editorial</li>
+                    <li>Planejamento de conteúdo</li>
+                    <li>Publicação completa</li>
+                    <li>Relatório mensal básico</li>
+                </ul>
+                <a href="https://wa.me/5500000000000?text=Tenho%20interesse%20no%20Plano%20Pro" class="cta-btn" style="text-align: center;">Contratar Pro</a>
+            </div>
+
+            <div class="card">
+                <h3>Premium</h3>
+                <div class="price">R$ 1.100 <span>/mês</span></div>
+                <ul>
+                    <li>16 posts/mês</li>
+                    <li>12 Stories</li>
+                    <li>8 Reels</li>
+                    <li>Legendas estratégicas</li>
+                    <li>Planejamento estratégico</li>
+                    <li>Publicação completa</li>
+                    <li>Relatório mensal detalhado</li>
+                    <li>Reunião mensal de alinhamento</li>
+                    <li>Estratégia focada em crescimento</li>
+                </ul>
+                <a href="https://wa.me/5500000000000?text=Tenho%20interesse%20no%20Plano%20Premium" class="cta-btn" style="text-align: center;">Contratar Premium</a>
+            </div>
+        </div>
+
+        <div class="notice-box">
+            📌 <strong>Nota:</strong> A gravação presencial de vídeos não está inclusa nos valores dos pacotes de redes sociais.
+        </div>
+    </section>
+
+    <section class="pricing-section" id="design">
+        <div class="section-title">
+            <h2>Design de Posts (Packs)</h2>
+            <p>Design profissional para demandas pontuais ou pacotes de artes</p>
+        </div>
+
+        <div class="cards-wrapper">
+            <div class="card">
+                <h3>Post Avulso</h3>
+                <div class="price">R$ 40 <span>/unidade</span></div>
+                <ul>
+                    <li>Arte em alta resolução</li>
+                    <li>Design sob demanda</li>
+                    <li>1 alteração inclusa</li>
+                </ul>
+                <a href="https://wa.me/5500000000000?text=Quero%20um%20Post%20Avulso" class="cta-btn" style="text-align: center;">Solicitar</a>
+            </div>
+
+            <div class="card">
+                <h3>Pack 10</h3>
+                <div class="price">R$ 300</div>
+                <ul>
+                    <li>10 artes profissionais</li>
+                    <li>R$ 30 por arte</li>
+                    <li>Identidade visual alinhada</li>
+                </ul>
+                <a href="https://wa.me/5500000000000?text=Quero%20o%20Pack%2010" class="cta-btn" style="text-align: center;">Solicitar Pack</a>
+            </div>
+
+            <div class="card">
+                <h3>Pack 20</h3>
+                <div class="price">R$ 500</div>
+                <ul>
+                    <li>20 artes profissionais</li>
+                    <li>R$ 25 por arte</li>
+                    <li>Identidade visual alinhada</li>
+                </ul>
+                <a href="https://wa.me/5500000000000?text=Quero%20o%20Pack%2020" class="cta-btn" style="text-align: center;">Solicitar Pack</a>
+            </div>
+
+            <div class="card">
+                <h3>Pack 30</h3>
+                <div class="price">R$ 650</div>
+                <ul>
+                    <li>30 artes profissionais</li>
+                    <li>Apenas R$ 21,66 por arte</li>
+                    <li>Melhor custo-benefício</li>
+                </ul>
+                <a href="https://wa.me/5500000000000?text=Quero%20o%20Pack%2030" class="cta-btn" style="text-align: center;">Solicitar Pack</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing-section" id="sites">
+        <div class="section-title">
+            <h2>Criação de Sites</h2>
+            <p>Sua estrutura própria na web com visual moderno e otimizado</p>
+        </div>
+
+        <div class="cards-wrapper">
+            <div class="card">
+                <h3>Landing Page</h3>
+                <div class="price">R$ 700</div>
+                <ul>
+                    <li>1 Página de alta conversão</li>
+                    <li>Design responsivo (Celular/PC)</li>
+                    <li>Botão direto para WhatsApp</li>
+                    <li>Formulário de contato</li>
+                    <li>SEO Básico</li>
+                    <li>Publicação inclusa</li>
+                </ul>
+                <a href="https://wa.me/5500000000000?text=Tenho%20interesse%20na%20Landing%20Page" class="cta-btn" style="text-align: center;">Solicitar Landing Page</a>
+            </div>
+
+            <div class="card featured">
+                <div class="badge">RECOMENDADO ⭐</div>
+                <h3>Site Business</h3>
+                <div class="price">R$ 1.200</div>
+                <ul>
+                    <li>Até 5 Páginas</li>
+                    <li>Design responsivo</li>
+                    <li>Integração com WhatsApp</li>
+                    <li>Formulários de contato</li>
+                    <li>SEO Básico</li>
+                    <li>Integração Google Maps</li>
+                    <li>Publicação inclusa</li>
+                </ul>
+                <a href="https://wa.me/5500000000000?text=Tenho%20interesse%20no%20Site%20Business" class="cta-btn" style="text-align: center;">Solicitar Site Business</a>
+            </div>
+
+            <div class="card">
+                <h3>Site Pro</h3>
+                <div class="price">R$ 2.000+</div>
+                <ul>
+                    <li>Até 8 Páginas</li>
+                    <li>Design 100% Personalizado</li>
+                    <li>Integrações avançadas</li>
+                    <li>Formulários dinâmicos</li>
+                    <li>SEO Básico</li>
+                    <li>Google Analytics configurado</li>
+                    <li>Publicação inclusa</li>
+                </ul>
+                <a href="https://wa.me/5500000000000?text=Tenho%20interesse%20no%20Site%20Pro" class="cta-btn" style="text-align: center;">Solicitar Orçamento</a>
+            </div>
+        </div>
+
+        <div class="notice-box">
+            💡 <strong>Manutenção de Sites:</strong> R$ 100 a R$ 200/mês (inclui pequenas alterações e suporte contínuo).<br>
+            <small>*Domínio e hospedagem são cobrados separadamente conforme a necessidade do projeto.</small>
+        </div>
+    </section>
+
+    <footer>
+        <p> &copy; 2026 FORWARD - Soluções Digitais para Negócios. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
